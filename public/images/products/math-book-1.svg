@@ -1,0 +1,10 @@
+<svg width="200" height="280" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="280" fill="#4F46E5" rx="8"/>
+  <rect x="20" y="40" width="160" height="200" fill="white" rx="4"/>
+  <text x="100" y="80" text-anchor="middle" fill="#4F46E5" font-family="Arial, sans-serif" font-size="14" font-weight="bold">MATHEMATICS</text>
+  <text x="100" y="100" text-anchor="middle" fill="#4F46E5" font-family="Arial, sans-serif" font-size="12">Primary 1</text>
+  <text x="100" y="140" text-anchor="middle" fill="#4F46E5" font-family="Arial, sans-serif" font-size="16" font-weight="bold">1 + 1 = 2</text>
+  <text x="100" y="160" text-anchor="middle" fill="#4F46E5" font-family="Arial, sans-serif" font-size="12">Basic Math</text>
+  <circle cx="100" cy="200" r="20" fill="#4F46E5"/>
+  <text x="100" y="205" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">∑</text>
+</svg>

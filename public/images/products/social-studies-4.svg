@@ -1,0 +1,10 @@
+<svg width="200" height="280" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="280" fill="#7C3AED" rx="8"/>
+  <rect x="20" y="40" width="160" height="200" fill="white" rx="4"/>
+  <text x="100" y="80" text-anchor="middle" fill="#7C3AED" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SOCIAL STUDIES</text>
+  <text x="100" y="100" text-anchor="middle" fill="#7C3AED" font-family="Arial, sans-serif" font-size="12">Primary 4</text>
+  <text x="100" y="140" text-anchor="middle" fill="#7C3AED" font-family="Arial, sans-serif" font-size="16" font-weight="bold">🌍</text>
+  <text x="100" y="160" text-anchor="middle" fill="#7C3AED" font-family="Arial, sans-serif" font-size="12">Our World</text>
+  <circle cx="100" cy="200" r="20" fill="#7C3AED"/>
+  <text x="100" y="205" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">🗺️</text>
+</svg>
