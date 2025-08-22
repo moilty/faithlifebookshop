@@ -80,7 +80,7 @@ export default function Footer() {
               {footerLinks.products.map((link) => (
                 <li key={link.name}>
                   <Link 
-                    href={link.href}
+                    href = 'https://faithlifebookshop.vercel.app'
                     className="text-secondary-300 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
@@ -114,7 +114,7 @@ export default function Footer() {
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
                   <Link 
-                    href={link.href}
+                    href= 'https://wa.me/2348130621314'
                     className="text-secondary-300 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
