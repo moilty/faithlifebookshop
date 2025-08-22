@@ -145,7 +145,7 @@ export default function SearchBar() {
           onBlur={() => setIsFocused(false)}
           placeholder="Search books, subjects, or ISBN..."
           className={`
-            w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 border-2 rounded-lg sm:rounded-xl transition-all duration-300
+            w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2 sm:py-3 lg:py-4 border-2 rounded-lg sm:rounded-xl transition-all duration-300
             focus:outline-none focus:ring-4 focus:ring-primary-500/20 text-sm sm:text-base
             ${isFocused 
               ? 'border-primary-500 bg-white shadow-lg' 
@@ -170,9 +170,9 @@ export default function SearchBar() {
 
       {/* Enhanced Search Results Dropdown */}
       {isOpen && (
-        <div className="absolute z-50 w-full bg-white border-2 border-t-0 border-primary-500 rounded-b-xl shadow-2xl max-h-96 overflow-hidden animate-slide-down">
+        <div className="absolute z-50 w-full bg-white border-2 border-t-0 border-primary-500 rounded-b-xl shadow-2xl max-h-80 sm:max-h-96 overflow-hidden animate-slide-down">
           {/* Search results header */}
-          <div className="px-4 py-3 bg-gradient-to-r from-primary-50 to-secondary-50 border-b border-secondary-200">
+          <div className="px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-primary-50 to-secondary-50 border-b border-secondary-200">
             <div className="flex items-center space-x-2">
               <SparklesIcon className="h-4 w-4 text-primary-600" />
               <span className="text-sm font-medium text-secondary-700">
@@ -181,12 +181,12 @@ export default function SearchBar() {
             </div>
           </div>
 
-          <div className="max-h-80 overflow-y-auto custom-scrollbar">
+          <div className="max-h-64 sm:max-h-80 overflow-y-auto custom-scrollbar">
             {isLoading ? (
-              <div className="p-6 text-center">
-                <div className="spinner w-8 h-8 mx-auto mb-3"></div>
-                <p className="text-secondary-600 font-medium">Searching...</p>
-                <p className="text-sm text-secondary-500">Looking for the best matches</p>
+              <div className="p-4 sm:p-6 text-center">
+                <div className="spinner w-6 h-6 sm:w-8 sm:h-8 mx-auto mb-2 sm:mb-3"></div>
+                <p className="text-secondary-600 font-medium text-sm sm:text-base">Searching...</p>
+                <p className="text-xs sm:text-sm text-secondary-500">Looking for the best matches</p>
               </div>
             ) : searchResults && searchResults.length > 0 ? (
               <div>
@@ -195,7 +195,7 @@ export default function SearchBar() {
                     key={result.id}
                     onClick={() => handleResultClick(result)}
                     className={`
-                      w-full text-left px-4 py-4 transition-all duration-200 group
+                      w-full text-left px-3 sm:px-4 py-3 sm:py-4 transition-all duration-200 group
                       ${index === selectedIndex 
                         ? 'bg-primary-50 border-l-4 border-primary-500' 
                         : 'hover:bg-secondary-50 border-l-4 border-transparent'
@@ -203,11 +203,11 @@ export default function SearchBar() {
                     `}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <div className="font-semibold text-secondary-900 group-hover:text-primary-600 transition-colors">
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-secondary-900 group-hover:text-primary-600 transition-colors text-sm sm:text-base truncate">
                           {result.title}
                         </div>
-                        <div className="text-sm text-secondary-600 mt-1">
+                        <div className="text-xs sm:text-sm text-secondary-600 mt-1 truncate">
                           {result.type === 'product' ? (
                             <>
                               {result.grade} • {result.subject}
@@ -218,7 +218,7 @@ export default function SearchBar() {
                         </div>
                       </div>
                       <div className={`
-                        text-xs font-medium px-2 py-1 rounded-full transition-all duration-200
+                        text-xs font-medium px-2 py-1 rounded-full transition-all duration-200 flex-shrink-0 ml-2
                         ${result.type === 'product' 
                           ? 'bg-blue-100 text-blue-700 group-hover:bg-blue-200' 
                           : 'bg-green-100 text-green-700 group-hover:bg-green-200'
@@ -231,25 +231,25 @@ export default function SearchBar() {
                 ))}
                 
                 {/* View all results */}
-                <div className="border-t border-secondary-200 p-4">
+                <div className="border-t border-secondary-200 p-3 sm:p-4">
                   <button
                     onClick={handleSearch}
-                    className="w-full text-left text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200 flex items-center justify-between group"
+                    className="w-full text-left text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200 flex items-center justify-between group text-sm sm:text-base"
                   >
-                    <span>View all results for "{query}"</span>
-                    <div className="w-4 h-4 bg-primary-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span className="truncate">View all results for "{query}"</span>
+                    <div className="w-4 h-4 bg-primary-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                       <SparklesIcon className="h-3 w-3 text-primary-600" />
                     </div>
                   </button>
                 </div>
               </div>
             ) : query.length >= 2 ? (
-              <div className="p-6 text-center">
-                <div className="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <MagnifyingGlassIcon className="h-6 w-6 text-secondary-400" />
+              <div className="p-4 sm:p-6 text-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
+                  <MagnifyingGlassIcon className="h-5 w-5 sm:h-6 sm:w-6 text-secondary-400" />
                 </div>
-                <p className="text-secondary-600 font-medium">No results found</p>
-                <p className="text-sm text-secondary-500">Try different keywords or browse our categories</p>
+                <p className="text-secondary-600 font-medium text-sm sm:text-base">No results found</p>
+                <p className="text-xs sm:text-sm text-secondary-500">Try different keywords or browse our categories</p>
               </div>
             ) : null}
           </div>

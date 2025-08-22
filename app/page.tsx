@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import HeroSection from '@/components/home/HeroSection'
-import GradeNavigation from '@/components/home/GradeNavigation'
 import FeaturedProducts from '@/components/home/FeaturedProducts'
 import Testimonials from '@/components/home/Testimonials'
 import NewsletterSignup from '@/components/home/NewsletterSignup'
@@ -12,21 +11,6 @@ export default function HomePage() {
       <main className="relative">
         {/* Hero Section - White */}
         <HeroSection />
-        
-        {/* Quick Grade Navigation - Light Green */}
-        <section className="py-16 bg-primary-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-secondary-900 mb-2">
-                Choose Your Grade Level
-              </h2>
-              <p className="text-secondary-600 max-w-2xl mx-auto">
-                Find the perfect learning materials for your child's educational journey
-              </p>
-            </div>
-            <GradeNavigation />
-          </div>
-        </section>
         
         {/* Featured Categories & Bestsellers - White */}
         <section className="py-20 bg-white">

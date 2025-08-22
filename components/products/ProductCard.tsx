@@ -32,8 +32,6 @@ export default function ProductCard({ product }: ProductCardProps) {
     }
   }
 
-
-
   const getGradeColor = (grade: string) => {
     const colors: Record<string, string> = {
       'Creche': 'grade-creche',
@@ -69,10 +67,10 @@ export default function ProductCard({ product }: ProductCardProps) {
   const stockStatus = getStockStatus()
 
   return (
-    <Link href={`/product/${product.id}`} className="group">
-      <div className="product-card bg-white rounded-xl border border-secondary-200 overflow-hidden">
+    <Link href={`/product/${product.id}`} className="group h-full block">
+      <div className="product-card bg-white rounded-xl border border-secondary-200 overflow-hidden h-full flex flex-col">
         {/* Product Image */}
-        <div className="relative aspect-[3/4] bg-secondary-100 overflow-hidden">
+        <div className="relative aspect-[3/4] bg-secondary-100 overflow-hidden flex-shrink-0">
           {product.images && product.images.length > 0 ? (
             <Image
               src={product.images[0]}
@@ -91,12 +89,10 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-medium ${stockStatus.color}`}>
             {stockStatus.text}
           </div>
-          
-
         </div>
 
-        {/* Product Info */}
-        <div className="p-4">
+        {/* Product Info - Flex container to push button to bottom */}
+        <div className="p-4 flex flex-col flex-1">
           {/* Grade and Subject */}
           <div className="flex items-center justify-between mb-2">
             <span className={`grade-chip ${getGradeColor(product.grade)}`}>
@@ -108,7 +104,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="font-semibold text-secondary-900 text-sm mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors">
+          <h3 className="font-semibold text-secondary-900 text-sm mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors flex-1">
             {product.title}
           </h3>
 
@@ -140,11 +136,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           </div>
 
-          {/* Add to Cart Button */}
+          {/* Add to Cart Button - Pushed to bottom */}
           <button
             onClick={handleAddToCart}
             disabled={product.stock === 0 || isAddingToCart}
-            className="w-full btn-primary py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="w-full btn-primary py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center mt-auto"
           >
             {isAddingToCart ? (
               <div className="spinner w-4 h-4" />

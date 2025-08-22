@@ -7,27 +7,27 @@ export default function FeaturedProducts() {
   const products = [
     {
       id: 1,
-      title: "New General Mathematics for Primary Schools Book 1",
+      title: "New General Mathematics for Junior Secondary Schools Book 1",
       author: "Murray Macrae",
       publisher: "Pearson Education",
-      grade: "Primary 1",
+      grade: "JSS 1",
       subject: "Mathematics",
       price: 2500,
-      salePrice: null,
+      salePrice: 2000,
       stock: 15,
-      images: ["/images/products/math-book-1.svg"]
+      images: ["/images/products/jss1 maths.png"]
     },
     {
       id: 2,
-      title: "English Language for Primary Schools Book 2",
-      author: "Sarah Johnson",
+      title: "New Oxford English Book 1",
+      author: "Ayo Banjo et al",
       publisher: "Oxford University Press",
-      grade: "Primary 2",
+      grade: "JSS 2",
       subject: "English",
       price: 2800,
       salePrice: 2400,
       stock: 8,
-      images: ["/images/products/english-book-2.svg"]
+      images: ["/images/products/english-2.png"]
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ export default function FeaturedProducts() {
       price: 3200,
       salePrice: null,
       stock: 12,
-      images: ["/images/products/science-book-3.svg"]
+      images: ["/images/products/science-3.png"]
     },
     {
       id: 4,

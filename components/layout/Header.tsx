@@ -47,8 +47,8 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-1 sm:space-x-2 group">
-                         <div className="relative shrink-0 h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 flex items-center justify-center">
+          <Link href="/" className="flex items-center space-x-1 sm:space-x-2 group flex-shrink-0">
+            <div className="relative shrink-0 h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 flex items-center justify-center">
               <Image
                 src={logoSrc}
                 alt="Faith Life Bookshop logo"
@@ -65,13 +65,13 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Search (Desktop) */}
-          <div className="hidden lg:block flex-1 max-w-xl mx-2">
+          {/* Search Bar - Integrated in main row */}
+          <div className="flex-1 max-w-md lg:max-w-xl mx-2 hidden sm:block">
             <SearchBar />
           </div>
 
           {/* Inline Navigation (Desktop) */}
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6 flex-shrink-0">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -87,7 +87,7 @@ export default function Header() {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
             <Link href="/cart" className="relative group">
               <div className="p-2 sm:p-3 bg-secondary-50 hover:bg-primary-50 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <ShoppingCartIcon className="h-5 w-5 sm:h-6 sm:w-6 text-secondary-700 group-hover:text-primary-600" />
@@ -123,13 +123,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile search */}
-        <div className="lg:hidden mt-2 sm:mt-3">
+        {/* Mobile search - Only show on very small screens */}
+        <div className="sm:hidden mt-2">
           <SearchBar />
         </div>
-
-        {/* Hidden second-row nav */}
-        <nav className="hidden" />
       </div>
 
       {/* Mobile Menu */}
