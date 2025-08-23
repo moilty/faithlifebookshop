@@ -92,7 +92,6 @@ export default function CheckoutPage() {
           updatedAt: new Date()
         },
         items: cart.items.map(item => ({
-          id: item.id,
           orderId: '', // Will be set by addNewOrder
           productId: item.product.id,
           product: item.product,
