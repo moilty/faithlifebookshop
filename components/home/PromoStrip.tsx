@@ -38,7 +38,7 @@ export default function PromoStrip() {
         <div className="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-white/25 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 py-4 relative z-10">
+              <div className="container mx-auto px-2 py-4 relative z-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             {/* Enhanced icon and badge */}
@@ -58,7 +58,7 @@ export default function PromoStrip() {
             {/* Main message */}
             <div className="flex items-center space-x-3">
               <span className="text-white/90 text-sm sm:text-base font-medium">
-                Save up to <span className="font-bold text-white">20%</span> on complete class booklists
+                Save up to <span className="font-bold text-white">20%</span> on selected items
               </span>
               <span className="hidden md:inline text-white/60">•</span>
               <span className="hidden md:inline text-white/80 text-sm">Free pickup at school</span>

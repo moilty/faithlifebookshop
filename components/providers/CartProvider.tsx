@@ -235,6 +235,24 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     try {
       if (!cart) return
 
+      // Handle FIRSTORDER coupon code
+      if (code.toUpperCase() === 'FIRSTORDER') {
+        const discount = Math.round(cart.subtotal * 0.4) // 40% off
+        
+        const updatedCart: Cart = {
+          ...cart,
+          couponCode: code.toUpperCase(),
+          discount,
+          total: cart.subtotal + cart.shipping - discount,
+          updatedAt: new Date()
+        }
+
+        await saveCart(updatedCart)
+        toast.success(`Coupon applied! Saved ${discount.toLocaleString()} NGN (40% off)`)
+        return
+      }
+
+      // For other coupon codes, you can implement API validation here
       const response = await fetch('/api/coupons/validate', {
         method: 'POST',
         headers: {

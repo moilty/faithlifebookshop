@@ -91,7 +91,7 @@ export default function FeaturesPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-gradient-primary text-white py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Features</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
@@ -103,7 +103,7 @@ export default function FeaturesPage() {
 
       {/* Features Grid */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-secondary-900 mb-6">Why Choose Faith Life Bookshop?</h2>
@@ -139,7 +139,7 @@ export default function FeaturesPage() {
 
       {/* How It Works */}
       <section className="py-20 bg-secondary-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-secondary-900 mb-6">How It Works</h2>
@@ -185,7 +185,7 @@ export default function FeaturesPage() {
 
       {/* Testimonials */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-secondary-900 mb-6">What Our Customers Say</h2>
@@ -218,7 +218,7 @@ export default function FeaturesPage() {
 
       {/* Comparison */}
       <section className="py-20 bg-secondary-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-secondary-900 mb-6">Why Faith Life Bookshop?</h2>
@@ -308,7 +308,7 @@ export default function FeaturesPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-primary text-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Experience Our Features?</h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

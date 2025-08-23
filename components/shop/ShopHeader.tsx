@@ -104,10 +104,8 @@ export default function ShopHeader({ searchParams }: ShopHeaderProps) {
             className="border border-secondary-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
           >
             <option value="relevance">Relevance</option>
-            <option value="newest">Newest</option>
             <option value="price_low">Price: Low to High</option>
             <option value="price_high">Price: High to Low</option>
-            <option value="popularity">Popularity</option>
           </select>
         </div>
       </div>

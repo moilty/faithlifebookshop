@@ -1,8 +1,7 @@
 'use client'
 
-import { useQuery } from 'react-query'
 import ProductCard from '@/components/products/ProductCard'
-import LoadingSpinner from '@/components/ui/LoadingSpinner'
+import { products, getFeaturedProducts, getProductsByGrade, getProductsBySubject } from '@/lib/data'
 import { useSearchParams } from 'next/navigation'
 
 interface ProductGridProps {
@@ -12,45 +11,100 @@ interface ProductGridProps {
 export default function ProductGrid({ searchParams }: ProductGridProps) {
   const searchParamsHook = useSearchParams()
   
-  const { data, isLoading, error } = useQuery(
-    ['products', searchParams],
-    async () => {
-      const params = new URLSearchParams(searchParamsHook)
-      const response = await fetch(`/api/products?${params.toString()}`)
-      if (!response.ok) throw new Error('Failed to fetch products')
-      return response.json()
-    },
-    {
-      keepPreviousData: true,
-      staleTime: 5 * 60 * 1000, // 5 minutes
-    }
+  // Check if any filters are applied
+  const hasFilters = Object.keys(searchParams).some(key => 
+    searchParams[key] && searchParams[key] !== ''
   )
+  
+  // Filter products based on search params
+  let filteredProducts = products
+  
+  if (searchParams.grade) {
+    filteredProducts = getProductsByGrade(searchParams.grade as any)
+  }
+  
+  if (searchParams.subject) {
+    filteredProducts = getProductsBySubject(searchParams.subject as any)
+  }
+  
+  if (searchParams.query) {
+    filteredProducts = filteredProducts.filter(product => 
+      product.title.toLowerCase().includes(searchParams.query!.toLowerCase()) ||
+      product.author.toLowerCase().includes(searchParams.query!.toLowerCase())
+    )
+  }
 
-  if (isLoading) {
+  // Sort products based on sort parameter
+  if (searchParams.sort) {
+    filteredProducts = [...filteredProducts].sort((a, b) => {
+      switch (searchParams.sort) {
+        case 'price_low':
+          return (a.salePrice || a.price) - (b.salePrice || b.price)
+        case 'price_high':
+          return (b.salePrice || b.price) - (a.salePrice || a.price)
+        default:
+          // relevance - keep original order
+          return 0
+      }
+    })
+  }
+
+  // If no filters are applied, show featured products first
+  if (!hasFilters) {
+    const featuredProducts = getFeaturedProducts()
     return (
-      <div className="flex justify-center py-12">
-        <LoadingSpinner size="lg" />
+      <div>
+        {/* Featured Products Section */}
+        <div className="mb-12">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-secondary-900 mb-2">Featured Products</h2>
+            <p className="text-secondary-600">Our most popular educational materials</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {featuredProducts.map((product: any) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+
+        {/* All Products Section */}
+        <div>
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-secondary-900 mb-2">All Books</h2>
+            <p className="text-secondary-600">Browse our complete collection</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {(() => {
+              let allProducts = [...products]
+              
+                             // Apply sorting to all products when no filters are applied
+               if (searchParams.sort) {
+                 allProducts.sort((a, b) => {
+                   switch (searchParams.sort) {
+                     case 'price_low':
+                       return (a.salePrice || a.price) - (b.salePrice || b.price)
+                     case 'price_high':
+                       return (b.salePrice || b.price) - (a.salePrice || a.price)
+                     default:
+                       return 0
+                   }
+                 })
+               }
+              
+              return allProducts.map((product: any) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            })()}
+          </div>
+        </div>
       </div>
     )
   }
 
-  if (error) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-secondary-600 mb-4">Failed to load products</p>
-        <button 
-          onClick={() => window.location.reload()}
-          className="btn-primary"
-        >
-          Try Again
-        </button>
-      </div>
-    )
-  }
-
-  const { products, pagination } = data || { products: [], pagination: null }
-
-  if (products.length === 0) {
+  // If filters are applied but no products found
+  if (filteredProducts.length === 0) {
     return (
       <div className="text-center py-12">
         <div className="text-6xl mb-4">📚</div>
@@ -75,91 +129,21 @@ export default function ProductGrid({ searchParams }: ProductGridProps) {
       {/* Results Count */}
       <div className="mb-6">
         <p className="text-secondary-600">
-          Showing {pagination?.page || 1} of {pagination?.totalPages || 1} pages
-          {pagination?.total && ` (${pagination.total} products)`}
+          Showing {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}
+          {hasFilters && (
+            <span> matching your criteria</span>
+          )}
         </p>
       </div>
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {products.map((product: any) => (
+        {filteredProducts.map((product: any) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-
-      {/* Pagination */}
-      {pagination && pagination.totalPages > 1 && (
-        <div className="mt-12 flex justify-center">
-          <Pagination pagination={pagination} searchParams={searchParams} />
-        </div>
-      )}
     </div>
   )
 }
 
-function Pagination({ pagination, searchParams }: { pagination: any, searchParams: any }) {
-  const currentPage = pagination.page
-  const totalPages = pagination.totalPages
-
-  const getPageUrl = (page: number) => {
-    const params = new URLSearchParams(searchParams)
-    params.set('page', page.toString())
-    return `/shop?${params.toString()}`
-  }
-
-  const renderPageNumbers = () => {
-    const pages = []
-    const maxVisible = 5
-    let start = Math.max(1, currentPage - Math.floor(maxVisible / 2))
-    let end = Math.min(totalPages, start + maxVisible - 1)
-
-    if (end - start + 1 < maxVisible) {
-      start = Math.max(1, end - maxVisible + 1)
-    }
-
-    for (let i = start; i <= end; i++) {
-      pages.push(i)
-    }
-
-    return pages
-  }
-
-  return (
-    <nav className="flex items-center space-x-2">
-      {/* Previous */}
-      {currentPage > 1 && (
-        <a
-          href={getPageUrl(currentPage - 1)}
-          className="px-3 py-2 text-sm border border-secondary-300 rounded-lg hover:bg-secondary-50 transition-colors"
-        >
-          Previous
-        </a>
-      )}
-
-      {/* Page Numbers */}
-      {renderPageNumbers().map((page) => (
-        <a
-          key={page}
-          href={getPageUrl(page)}
-          className={`px-3 py-2 text-sm border rounded-lg transition-colors ${
-            page === currentPage
-              ? 'bg-primary-600 text-white border-primary-600'
-              : 'border-secondary-300 hover:bg-secondary-50'
-          }`}
-        >
-          {page}
-        </a>
-      ))}
-
-      {/* Next */}
-      {currentPage < totalPages && (
-        <a
-          href={getPageUrl(currentPage + 1)}
-          className="px-3 py-2 text-sm border border-secondary-300 rounded-lg hover:bg-secondary-50 transition-colors"
-        >
-          Next
-        </a>
-      )}
-    </nav>
-  )
-} 
+ 

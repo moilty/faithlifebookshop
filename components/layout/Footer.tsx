@@ -22,7 +22,6 @@ const footerLinks = {
     { name: 'About Us', href: '/about' },
     { name: 'Teachers', href: '/teachers' },
     { name: 'Careers', href: '/careers' },
-    { name: 'Blog', href: '/blog' },
   ],
   support: [
     { name: 'Help Center', href: '/faqs' },
@@ -52,7 +51,8 @@ export default function Footer() {
   return (
     <footer className="global-footer bg-secondary-900 text-white">
       {/* Top Section - Branding and Tagline */}
-      <div className="container mx-auto px-4 py-8 sm:py-12">
+              <div className="container mx-auto px-2 py-8 sm:py-12">
+        
         <div className="flex items-center space-x-3 mb-4">
           <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
             <Image
@@ -71,7 +71,7 @@ export default function Footer() {
       </div>
 
       {/* Middle Section - Navigation Links */}
-      <div className="container mx-auto px-4 pb-8">
+              <div className="container mx-auto px-2 pb-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Products */}
           <div>
@@ -145,7 +145,7 @@ export default function Footer() {
 
       {/* Bottom Section - Copyright, Social Media, and Back to Top */}
       <div className="border-t border-secondary-800">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-2 py-6">
           {/* Copyright */}
           <div className="text-center mb-4">
             <p className="text-secondary-400 text-sm">

@@ -4,6 +4,8 @@ import './globals.css'
 import Providers from '@/components/providers/Providers'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import Link from 'next/link'
+import { Cog6ToothIcon } from '@heroicons/react/24/outline'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -82,10 +84,20 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <Providers>
           <Header />
-          <main className="relative pt-20 sm:pt-24 overflow-x-hidden">
+          <main className="relative pt-24 sm:pt-28 lg:pt-32 overflow-x-hidden">
             {children}
           </main>
           <Footer />
+          
+          {/* Admin Dashboard Button - Fixed Position in Corner */}
+          <Link
+            href="/admin"
+            className="fixed bottom-6 left-6 bg-white text-secondary-900 p-3 rounded-full shadow-lg hover:bg-gray-100 transition-colors z-50"
+            aria-label="Admin Dashboard"
+            title="Admin Dashboard"
+          >
+            <Cog6ToothIcon className="h-5 w-5" />
+          </Link>
         </Providers>
       </body>
     </html>

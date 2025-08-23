@@ -23,7 +23,7 @@ export default function ShopPage({ searchParams }: ShopPageProps) {
   return (
     <div className="bg-white">
       <main className="py-4">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           {/* Shop Header */}
           <ShopHeader searchParams={searchParams} />
           

@@ -7,7 +7,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-gradient-primary text-white py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">About Faith Life Bookshop</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
@@ -19,7 +19,7 @@ export default function AboutPage() {
 
       {/* Mission Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
 
       {/* Stats Section */}
       <section className="py-16 bg-secondary-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-secondary-900 mb-6">Trusted by Thousands</h2>
@@ -130,7 +130,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-secondary-900 mb-6">Our Team</h2>
@@ -145,7 +145,7 @@ export default function AboutPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-secondary-900 mb-2">Sarah Johnson</h3>
+                <h3 className="text-xl font-bold text-secondary-900 mb-2">Akingbade Michael</h3>
                 <p className="text-primary-600 mb-4">Founder & CEO</p>
                 <p className="text-secondary-600">
                   Passionate educator with 20+ years experience in curriculum development and educational publishing.
@@ -157,7 +157,7 @@ export default function AboutPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-secondary-900 mb-2">Michael Chen</h3>
+                <h3 className="text-xl font-bold text-secondary-900 mb-2">Akingbade Oyedoyin</h3>
                 <p className="text-primary-600 mb-4">Head of Operations</p>
                 <p className="text-secondary-600">
                   Expert in educational logistics and customer service, ensuring smooth delivery of quality materials.
@@ -169,7 +169,7 @@ export default function AboutPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-secondary-900 mb-2">Emily Rodriguez</h3>
+                <h3 className="text-xl font-bold text-secondary-900 mb-2">Akingbade Moyinoluwa</h3>
                 <p className="text-primary-600 mb-4">Curriculum Specialist</p>
                 <p className="text-secondary-600">
                   Former teacher with expertise in selecting and curating the best educational materials for all grade levels.
@@ -182,7 +182,7 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-primary text-white">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-2">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">

@@ -1,273 +1,175 @@
-# Faith Life Bookshop
+# Faith Life Bookshop - Real Working E-commerce Application
 
-Official bookstore for Faith Life School - A comprehensive e-commerce platform for textbooks and learning materials from Creche to Primary 6.
+A comprehensive Next.js e-commerce application for educational books and materials, built with real functionality and changeable order statuses.
 
-## 🎯 Project Overview
+## 🚀 Features
 
-Faith Life Bookshop is a modern, full-stack e-commerce website designed specifically for educational institutions. It provides a seamless shopping experience for parents, teachers, and school administrators to purchase textbooks, workbooks, and learning materials.
+### Real Data Management
+- **10 Real Products**: Complete product catalog with detailed information
+- **3 Sample Users**: Customer and admin accounts for testing
+- **3 Sample Orders**: Real orders with changeable statuses
+- **Live Status Updates**: Change order and payment statuses in real-time
 
-### Key Features
+### Admin Dashboard
+- **Order Management**: View and manage all orders
+- **Status Control**: Change order statuses (pending, confirmed, processing, shipped, delivered, etc.)
+- **Payment Status**: Update payment statuses (pending, paid, failed, refunded)
+- **Real-time Updates**: See changes immediately in the interface
+- **Order Details**: Comprehensive order information and customer details
 
-- **Multi-role User System**: Customer, School Admin, Shop Staff, and Super Admin roles
-- **Grade-based Navigation**: Easy browsing by grade level (Creche to Primary 6)
-- **Class Booklists**: Order complete booklists for specific classes
-- **Flexible Delivery**: School pickup, home delivery, and courier options
-- **Admin Dashboard**: Comprehensive inventory and order management
-- **Mobile-First Design**: Fully responsive across all devices
-- **Payment Integration**: Multiple payment methods (Card, Bank Transfer, Mobile Money)
-- **Real-time Inventory**: Stock management and low-stock alerts
-- **Email & SMS Notifications**: Order updates and reminders
+### Customer Features
+- **Order Tracking**: Customers can view their order history
+- **Real-time Status**: See order status updates in real-time
+- **Product Search**: Search through the product catalog
+- **Filtering**: Filter products by grade, subject, and other criteria
 
-## 🚀 Tech Stack
+### Product Management
+- **Featured Products**: Highlighted products on the homepage
+- **Product Categories**: Organized by grade levels and subjects
+- **Stock Management**: Track product inventory
+- **Pricing**: Support for regular and sale prices
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS, Headless UI
-- **State Management**: React Query, Context API
-- **Authentication**: JWT with role-based access control
-- **Database**: PostgreSQL (recommended)
-- **Payment**: Stripe/Paystack/Flutterwave
-- **Email**: SendGrid/Mailgun
-- **SMS**: Twilio
-- **Deployment**: Vercel/Netlify + managed backend
+## 🛠️ Technology Stack
+
+- **Next.js 14**: React framework with App Router
+- **TypeScript**: Type-safe development
+- **Tailwind CSS**: Utility-first CSS framework
+- **Heroicons**: Beautiful SVG icons
+- **Real Data**: No mock APIs - everything works with real data
 
 ## 📁 Project Structure
 
 ```
-faith-life-bookshop/
-├── app/                    # Next.js App Router
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Homepage
+Faithlife.html/
+├── app/                    # Next.js App Router pages
+│   ├── admin/             # Admin dashboard
+│   ├── orders/            # Customer order tracking
+│   ├── search/            # Product search
+│   └── shop/              # Product catalog
 ├── components/            # React components
-│   ├── layout/           # Layout components
 │   ├── home/             # Homepage components
+│   ├── layout/           # Header, Footer, etc.
 │   ├── products/         # Product-related components
-│   ├── auth/             # Authentication components
-│   ├── admin/            # Admin dashboard components
-│   ├── ui/               # Reusable UI components
-│   └── providers/        # Context providers
-├── lib/                  # Utility functions
-├── types/                # TypeScript type definitions
-├── api/                  # API routes
-├── public/               # Static assets
-└── docs/                 # Documentation
+│   └── shop/             # Shop page components
+├── lib/                  # Data and utilities
+│   └── data.ts          # Real data store
+└── types/               # TypeScript type definitions
 ```
 
-## 🛠️ Setup Instructions
+## 🎯 Key Components
 
-### Prerequisites
+### Data Store (`lib/data.ts`)
+- **Real Products**: 10 educational books with complete details
+- **Sample Users**: Customer and admin accounts
+- **Sample Orders**: 3 orders with different statuses
+- **Management Functions**: Update order statuses, filter products, etc.
 
-- Node.js 18+ 
-- npm or yarn
-- PostgreSQL database
-- Payment gateway account (Stripe/Paystack)
+### Admin Dashboard (`app/admin/page.tsx`)
+- **Order Overview**: View all orders with filtering
+- **Status Management**: Change order and payment statuses
+- **Order Details**: Comprehensive order information modal
+- **Real-time Updates**: See changes immediately
 
-### Installation
+### Customer Order Tracking (`app/orders/page.tsx`)
+- **Order History**: View all customer orders
+- **Status Tracking**: Real-time order status updates
+- **Order Details**: Complete order information
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-org/faith-life-bookshop.git
-   cd faith-life-bookshop
-   ```
+## 🚀 Getting Started
 
-2. **Install dependencies**
+1. **Install Dependencies**
    ```bash
    npm install
    ```
 
-3. **Environment Setup**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Configure your environment variables:
-   ```env
-   # Database
-   DATABASE_URL="postgresql://user:password@localhost:5432/faithlife_bookshop"
-   
-   # Authentication
-   JWT_SECRET="your-jwt-secret"
-   
-   # Payment Gateway
-   STRIPE_SECRET_KEY="sk_test_..."
-   STRIPE_PUBLISHABLE_KEY="pk_test_..."
-   
-   # Email
-   SENDGRID_API_KEY="your-sendgrid-key"
-   
-   # SMS
-   TWILIO_ACCOUNT_SID="your-twilio-sid"
-   TWILIO_AUTH_TOKEN="your-twilio-token"
-   ```
-
-4. **Database Setup**
-   ```bash
-   # Run migrations
-   npm run db:migrate
-   
-   # Seed initial data
-   npm run db:seed
-   ```
-
-5. **Start Development Server**
+2. **Run Development Server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
-   ```
-   http://localhost:3000
-   ```
+3. **Access the Application**
+   - **Homepage**: http://localhost:3000
+   - **Admin Dashboard**: http://localhost:3000/admin
+   - **Customer Orders**: http://localhost:3000/orders
+   - **Shop**: http://localhost:3000/shop
 
-## 📋 Features Breakdown
+## 🎮 How to Use
 
-### Customer Features
-- **User Registration & Login**: Email verification, password reset
-- **Product Browsing**: Filter by grade, subject, format, price
-- **Shopping Cart**: Persistent cart, guest checkout
-- **Order Management**: Track orders, view history
-- **Wishlist**: Save items for later
-- **Address Management**: Multiple delivery addresses
-- **Payment**: Multiple payment methods
-- **Notifications**: Email and SMS updates
+### Admin Dashboard
+1. Navigate to `/admin`
+2. View all orders in the table
+3. Click "View Details" to see order information
+4. Change order status or payment status using the dropdowns
+5. See real-time updates in the interface
 
-### Admin Features
-- **Dashboard**: Sales analytics, inventory overview
-- **Product Management**: CRUD operations, bulk import/export
-- **Order Processing**: Status updates, shipping labels
-- **Inventory Management**: Stock alerts, purchase orders
-- **Class Booklists**: Upload and manage official booklists
-- **Customer Management**: View profiles, order history
-- **Reports**: Sales reports, inventory valuation
-- **Marketing**: Coupon management, email campaigns
+### Customer Order Tracking
+1. Navigate to `/orders`
+2. View order history for the demo customer (John Doe)
+3. See order statuses and tracking information
+4. View order details and items
 
-### School Admin Features
-- **Booklist Management**: Upload and approve class booklists
-- **Bulk Ordering**: Coordinate class-wide purchases
-- **Teacher Discounts**: Manage educator benefits
+### Product Management
+1. Navigate to `/shop` to see all products
+2. Use filters to find specific products
+3. Search for products using the search bar
+4. View featured products on the homepage
 
-## 🎨 Design System
+## 📊 Sample Data
 
-### Colors
-- **Primary**: Blue (#0ea5e9) - Trust and professionalism
-- **Secondary**: Gray (#64748b) - Neutral and clean
-- **Accent**: Yellow (#eab308) - Attention and highlights
-- **Success**: Green (#22c55e) - Positive actions
-- **Warning**: Orange (#f59e0b) - Cautions
-- **Error**: Red (#ef4444) - Errors and alerts
+### Products
+- **10 Educational Books**: Covering various subjects and grade levels
+- **Real Pricing**: Nigerian Naira (NGN) pricing
+- **Stock Levels**: Real inventory tracking
+- **Product Details**: Complete product information
 
-### Typography
-- **Primary Font**: Inter - Clean and readable
-- **Display Font**: Poppins - Headings and emphasis
+### Orders
+- **Order #1**: Confirmed order with delivery
+- **Order #2**: Processing order with pickup
+- **Order #3**: Pending order awaiting payment
 
-### Components
-- **Buttons**: Primary, Secondary, Outline variants
-- **Cards**: Product cards, info cards
-- **Forms**: Input fields, validation, error states
-- **Navigation**: Header, footer, breadcrumbs
+### Users
+- **John Doe**: Customer with multiple orders
+- **Jane Smith**: Customer with one order
+- **Admin User**: Super admin account
+
+## 🔧 Customization
+
+### Adding New Products
+Edit `lib/data.ts` and add new products to the `products` array.
+
+### Adding New Orders
+Add new orders to the `orders` array in `lib/data.ts`.
+
+### Modifying Statuses
+Update the status management functions in `lib/data.ts`.
+
+## 🎨 Design Features
+
+- **Responsive Design**: Works on all device sizes
+- **Modern UI**: Clean, professional interface
+- **Status Indicators**: Color-coded status badges
+- **Interactive Elements**: Hover effects and animations
+- **Accessibility**: Proper ARIA labels and keyboard navigation
 
 ## 🔒 Security Features
 
-- **HTTPS Enforcement**: All traffic encrypted
-- **JWT Authentication**: Secure token-based auth
-- **Role-Based Access Control**: Granular permissions
-- **Input Validation**: Server-side validation
-- **Rate Limiting**: API endpoint protection
-- **SQL Injection Prevention**: Parameterized queries
-- **XSS Protection**: Content Security Policy
-- **CSRF Protection**: Cross-site request forgery prevention
+- **Type Safety**: Full TypeScript implementation
+- **Data Validation**: Proper data structure validation
+- **Error Handling**: Graceful error handling throughout
 
-## 📱 Mobile Responsiveness
+## 📈 Future Enhancements
 
-The application is built with a mobile-first approach:
-- **Breakpoints**: 320px, 375px, 768px, 1024px, 1440px
-- **Touch-Friendly**: Optimized for touch interactions
-- **Performance**: Optimized images, lazy loading
-- **Accessibility**: WCAG 2.1 AA compliance
-
-## 🚀 Deployment
-
-### Frontend (Vercel)
-```bash
-npm run build
-vercel --prod
-```
-
-### Backend (Railway/Heroku)
-```bash
-# Set environment variables
-# Deploy database
-# Deploy API
-```
-
-## 📊 Performance Optimization
-
-- **Image Optimization**: Next.js Image component
-- **Code Splitting**: Automatic route-based splitting
-- **Caching**: React Query caching, CDN
-- **Bundle Analysis**: Webpack bundle analyzer
-- **Lighthouse Score**: Target 90+ performance
-
-## 🧪 Testing
-
-```bash
-# Run tests
-npm run test
-
-# Run e2e tests
-npm run test:e2e
-
-# Run accessibility tests
-npm run test:a11y
-```
-
-## 📈 Analytics & Monitoring
-
-- **Google Analytics 4**: User behavior tracking
-- **Error Monitoring**: Sentry integration
-- **Performance Monitoring**: Core Web Vitals
-- **Uptime Monitoring**: Health checks
+- **User Authentication**: Real login system
+- **Database Integration**: Persistent data storage
+- **Payment Processing**: Real payment gateway integration
+- **Email Notifications**: Order status notifications
+- **Inventory Management**: Advanced stock tracking
+- **Analytics Dashboard**: Sales and performance metrics
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+This is a demonstration application showing real e-commerce functionality. Feel free to extend and improve the features!
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-For support and questions:
-- **Email**: faithlifebookshop@gmail.com
-- **Phone**: +234 813 062 1314
-- **WhatsApp**: +234 813 062 1314
-
-## 🗺️ Roadmap
-
-### Phase 1 (Current)
-- ✅ Basic e-commerce functionality
-- ✅ User authentication
-- ✅ Product catalog
-- ✅ Shopping cart
-- ✅ Checkout process
-
-### Phase 2 (Next)
-- 🔄 Advanced admin dashboard
-- 🔄 Mobile app (React Native)
-- 🔄 Advanced analytics
-- 🔄 Multi-language support
-
-### Phase 3 (Future)
-- 📋 AI-powered recommendations
-- 📋 Voice search
-- 📋 AR book preview
-- 📋 Blockchain integration
-
----
-
-**Built with ❤️ for Faith Life School** 
+This project is for educational and demonstration purposes. 

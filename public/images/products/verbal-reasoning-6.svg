@@ -1,12 +1,60 @@
 <svg width="200" height="280" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="200" height="280" fill="#0891B2" rx="8"/>
-  <rect x="20" y="40" width="160" height="200" fill="white" rx="4"/>
-  <text x="100" y="80" text-anchor="middle" fill="#0891B2" font-family="Arial, sans-serif" font-size="12" font-weight="bold">VERBAL</text>
-  <text x="100" y="95" text-anchor="middle" fill="#0891B2" font-family="Arial, sans-serif" font-size="12" font-weight="bold">REASONING</text>
-  <text x="100" y="110" text-anchor="middle" fill="#0891B2" font-family="Arial, sans-serif" font-size="12">Primary 6</text>
-  <text x="100" y="140" text-anchor="middle" fill="#0891B2" font-family="Arial, sans-serif" font-size="16" font-weight="bold">ABC</text>
-  <text x="100" y="160" text-anchor="middle" fill="#0891B2" font-family="Arial, sans-serif" font-size="12">Words</text>
-  <circle cx="100" cy="200" r="20" fill="#0891B2"/>
-  <text x="100" y="205" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">💭</text>
+  <!-- Book Background -->
+  <rect x="20" y="20" width="160" height="240" rx="8" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2"/>
+  
+  <!-- Book Spine -->
+  <rect x="20" y="20" width="8" height="240" fill="#0369A1"/>
+  
+  <!-- Title Area -->
+  <rect x="40" y="40" width="120" height="40" fill="#0C4A6E" rx="4"/>
+  <text x="100" y="60" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">VERBAL REASONING</text>
+  <text x="100" y="75" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">Primary 6</text>
+  
+  <!-- Brain Icon -->
+  <g transform="translate(70, 100)">
+    <path d="M15 5 Q25 0 30 10 Q25 20 15 25 Q5 20 0 10 Q5 0 15 5" fill="#F1F5F9" stroke="#64748B" stroke-width="1"/>
+    <path d="M10 8 Q15 5 20 8 Q15 12 10 8" fill="#E2E8F0"/>
+    <path d="M8 15 Q15 12 22 15 Q15 18 8 15" fill="#E2E8F0"/>
+    <circle cx="12" cy="10" r="1" fill="#64748B"/>
+    <circle cx="18" cy="10" r="1" fill="#64748B"/>
+    <circle cx="15" cy="16" r="1" fill="#64748B"/>
+  </g>
+  
+  <!-- Word Cloud -->
+  <g transform="translate(110, 100)">
+    <text x="0" y="0" fill="#0EA5E9" font-family="Arial, sans-serif" font-size="6" font-weight="bold">THINK</text>
+    <text x="15" y="8" fill="#0369A1" font-family="Arial, sans-serif" font-size="5">LOGIC</text>
+    <text x="5" y="16" fill="#0EA5E9" font-family="Arial, sans-serif" font-size="5">REASON</text>
+    <text x="20" y="12" fill="#0369A1" font-family="Arial, sans-serif" font-size="4">SOLVE</text>
+  </g>
+  
+  <!-- Question Mark -->
+  <g transform="translate(60, 160)">
+    <circle cx="10" cy="10" r="8" fill="#0EA5E9" stroke="#0369A1" stroke-width="1"/>
+    <text x="10" y="14" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">?</text>
+  </g>
+  
+  <!-- Light Bulb -->
+  <g transform="translate(100, 160)">
+    <ellipse cx="10" cy="15" rx="6" ry="8" fill="#FCD34D" stroke="#F59E0B" stroke-width="1"/>
+    <rect x="8" y="15" width="4" height="6" fill="#F59E0B"/>
+    <path d="M6 8 Q10 5 14 8" fill="none" stroke="#F59E0B" stroke-width="1"/>
+    <path d="M7 6 Q10 3 13 6" fill="none" stroke="#F59E0B" stroke-width="1"/>
+  </g>
+  
+  <!-- ABC Letters -->
+  <g transform="translate(130, 160)">
+    <text x="0" y="0" fill="#374151" font-family="Arial, sans-serif" font-size="10" font-weight="bold">A</text>
+    <text x="8" y="0" fill="#6B7280" font-family="Arial, sans-serif" font-size="10" font-weight="bold">B</text>
+    <text x="16" y="0" fill="#9CA3AF" font-family="Arial, sans-serif" font-size="10" font-weight="bold">C</text>
+    <text x="0" y="12" fill="#6B7280" font-family="Arial, sans-serif" font-size="8">Words</text>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <circle cx="60" cy="220" r="3" fill="#0EA5E9"/>
+  <circle cx="80" cy="220" r="3" fill="#0369A1"/>
+  <circle cx="100" cy="220" r="3" fill="#0C4A6E"/>
+  <circle cx="120" cy="220" r="3" fill="#FCD34D"/>
+  <circle cx="140" cy="220" r="3" fill="#F59E0B"/>
 </svg>
 

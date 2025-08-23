@@ -1,0 +1,48 @@
+<svg width="200" height="280" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book Background -->
+  <rect x="20" y="20" width="160" height="240" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="2"/>
+  
+  <!-- Book Spine -->
+  <rect x="20" y="20" width="8" height="240" fill="#991B1B"/>
+  
+  <!-- Title Area -->
+  <rect x="40" y="40" width="120" height="40" fill="#7F1D1D" rx="4"/>
+  <text x="100" y="60" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">FRENCH</text>
+  <text x="100" y="75" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">Primary 1</text>
+  
+  <!-- French Flag -->
+  <g transform="translate(60, 100)">
+    <rect x="0" y="0" width="8" height="20" fill="#3B82F6"/>
+    <rect x="8" y="0" width="8" height="20" fill="white"/>
+    <rect x="16" y="0" width="8" height="20" fill="#EF4444"/>
+  </g>
+  
+  <!-- Eiffel Tower -->
+  <g transform="translate(120, 100)">
+    <rect x="15" y="20" width="2" height="15" fill="#374151"/>
+    <rect x="12" y="15" width="8" height="2" fill="#374151"/>
+    <rect x="10" y="10" width="12" height="2" fill="#374151"/>
+    <rect x="8" y="5" width="16" height="2" fill="#374151"/>
+    <rect x="6" y="0" width="20" height="2" fill="#374151"/>
+    <rect x="14" y="0" width="4" height="20" fill="#6B7280"/>
+  </g>
+  
+  <!-- Croissant -->
+  <g transform="translate(70, 160)">
+    <path d="M20 10 Q30 5 40 10 Q35 20 25 25 Q15 20 20 10" fill="#FCD34D" stroke="#F59E0B" stroke-width="1"/>
+    <path d="M25 15 Q30 12 35 15" fill="none" stroke="#F59E0B" stroke-width="1"/>
+  </g>
+  
+  <!-- French Text -->
+  <g transform="translate(110, 160)">
+    <text x="0" y="0" fill="#374151" font-family="Arial, sans-serif" font-size="8" font-weight="bold">BONJOUR</text>
+    <text x="0" y="12" fill="#6B7280" font-family="Arial, sans-serif" font-size="6">Hello</text>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <circle cx="60" cy="220" r="3" fill="#3B82F6"/>
+  <circle cx="80" cy="220" r="3" fill="white"/>
+  <circle cx="100" cy="220" r="3" fill="#EF4444"/>
+  <circle cx="120" cy="220" r="3" fill="#FCD34D"/>
+  <circle cx="140" cy="220" r="3" fill="#374151"/>
+</svg>

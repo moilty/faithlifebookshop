@@ -4,12 +4,12 @@ import Link from 'next/link'
 
 export default function HeroSection() {
   return (
-    <section className="bg-white min-h-[65vh] flex items-center">
-      <div className="container mx-auto px-4">
+    <div className="min-h-[65vh] flex items-center">
+      <div className="container mx-auto px-2">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center py-12 md:py-16 lg:py-20">
           {/* Left content */}
           <div className="text-center md:text-left">
-            <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary-50 text-primary-700 text-xs sm:text-sm font-medium mb-4 md:mb-6">
+            <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white text-primary-700 text-xs sm:text-sm font-medium mb-4 md:mb-6">
               Back-to-School Made Simple
             </div>
 
@@ -20,7 +20,7 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary-600/80 mb-4 md:mb-6">
-              Faith Life Families
+              Faith Life
             </p>
 
             <p className="text-base sm:text-lg md:text-xl text-secondary-700 leading-relaxed mb-6 md:mb-8 max-w-2xl mx-auto md:mx-0">
@@ -29,11 +29,11 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-              <Link href="/shop" className="btn-primary inline-flex items-center justify-center">
-                Start Shopping Now
+              <Link href="/auth/register" className="btn-primary inline-flex items-center justify-center">
+                Get Started
               </Link>
-              <Link href="/booklists" className="btn-outline inline-flex items-center justify-center">
-                View Booklists
+              <Link href="/shop" className="btn-outline inline-flex items-center justify-center">
+                View Shop
               </Link>
             </div>
           </div>
@@ -51,6 +51,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 } 

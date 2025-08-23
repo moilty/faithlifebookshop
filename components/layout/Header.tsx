@@ -19,6 +19,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [logoSrc, setLogoSrc] = useState<string>('/images/logo.png')
+  const [isLoaded, setIsLoaded] = useState(false)
   const { user } = useAuth()
   const { getCartItemCount } = useCart()
   const pathname = usePathname()
@@ -26,9 +27,7 @@ export default function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
-    { name: 'Booklists', href: '/booklists' },
     { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ]
 
@@ -43,12 +42,12 @@ export default function Header() {
   return (
     <header className={`global-header fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'shadow-sm' : ''
-    } bg-white border-b border-primary-600/60 min-h-[64px] sm:min-h-[72px]`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    } bg-white border-b border-primary-600/60 min-h-[72px] sm:min-h-[80px] lg:min-h-[88px]`}>
+              <div className="container mx-auto px-2 sm:px-4 lg:px-6 py-2 sm:py-3">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-1 sm:space-x-2 group flex-shrink-0">
-            <div className="relative shrink-0 h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 flex items-center justify-center">
+            <div className="relative shrink-0 h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 flex items-center justify-center">
               <Image
                 src={logoSrc}
                 alt="Faith Life Bookshop logo"
@@ -60,7 +59,7 @@ export default function Header() {
               />
             </div>
             <div className="block">
-              <h1 className="text-lg sm:text-xl font-bold text-secondary-900">Faith Life Bookshop</h1>
+              <h1 className="text-base sm:text-lg lg:text-xl font-bold text-secondary-900 leading-tight">Faith Life Bookshop</h1>
               <p className="text-xs text-secondary-600 hidden sm:block">Official School Bookstore</p>
             </div>
           </Link>
@@ -130,29 +129,29 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-secondary-200 bg-white shadow-lg absolute top-full left-0 right-0">
-          <nav className="container mx-auto px-4 py-3 sm:py-4">
-            <div className="space-y-3 sm:space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`block font-medium py-2 sm:py-3 ${
-                    isActive(item.href) ? 'text-primary-700' : 'text-secondary-700 hover:text-primary-600'
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span className="relative">
-                    {item.name}
-                    <span className={`block h-0.5 mt-1 bg-primary-600 ${isActive(item.href) ? 'w-full' : 'w-0'}`} />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </nav>
-        </div>
-      )}
+      <div className={`lg:hidden border-t border-secondary-200 bg-white shadow-lg absolute top-full left-0 right-0 max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] overflow-y-auto transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'opacity-100 visible transform translate-y-0' : 'opacity-0 invisible transform -translate-y-2'
+      }`}>
+                  <nav className="container mx-auto px-2 py-3 sm:py-4">
+          <div className="space-y-3 sm:space-y-4">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`block font-medium py-2 sm:py-3 transition-colors duration-200 ${
+                  isActive(item.href) ? 'text-primary-700' : 'text-secondary-700 hover:text-primary-600'
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="relative">
+                  {item.name}
+                  <span className={`block h-0.5 mt-1 bg-primary-600 transition-all duration-300 ${isActive(item.href) ? 'w-full' : 'w-0'}`} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </nav>
+      </div>
     </header>
   )
 }

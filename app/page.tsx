@@ -9,12 +9,14 @@ export default function HomePage() {
   return (
     <div className="bg-white custom-scrollbar">
       <main className="relative">
-        {/* Hero Section - White */}
-        <HeroSection />
+        {/* Hero Section - Light Green */}
+        <section className="bg-primary-50">
+          <HeroSection />
+        </section>
         
         {/* Featured Categories & Bestsellers - White */}
         <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto px-2 sm:px-4 lg:px-6">
             <div className="text-center mb-16">
               <div className="inline-block px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-medium mb-4">
                 🏆 Featured Collection
@@ -37,13 +39,11 @@ export default function HomePage() {
           </div>
         </section>
         
-
-        
-        {/* Testimonials - White */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Testimonials - Light Green */}
+        <section className="py-20 bg-primary-50">
+          <div className="container mx-auto px-2 sm:px-4 lg:px-6">
             <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm font-medium mb-4">
+              <div className="inline-block px-4 py-2 bg-white text-primary-700 rounded-full text-sm font-medium mb-4">
                 💬 What Parents Say
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-6">
@@ -57,11 +57,9 @@ export default function HomePage() {
           </div>
         </section>
         
-        {/* Newsletter Signup - Light Green */}
-        <section className="py-20 bg-primary-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <NewsletterSignup />
-          </div>
+        {/* Newsletter Signup - White */}
+        <section className="bg-white">
+          <NewsletterSignup />
         </section>
       </main>
     </div>

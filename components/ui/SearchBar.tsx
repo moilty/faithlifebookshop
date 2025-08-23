@@ -3,15 +3,17 @@
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { MagnifyingGlassIcon, XMarkIcon, SparklesIcon } from '@heroicons/react/24/outline'
-import { useQuery } from 'react-query'
 
 interface SearchResult {
   id: string
   title: string
-  type: 'product' | 'booklist'
+  type: 'product'
   grade?: string
   subject?: string
   url: string
+  author?: string
+  price?: number
+  image?: string
 }
 
 export default function SearchBar() {
@@ -19,27 +21,48 @@ export default function SearchBar() {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(-1)
   const [isFocused, setIsFocused] = useState(false)
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
+  const [isLoading, setIsLoading] = useState(false)
   const searchRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
-  // Search query
-  const { data: searchResults, isLoading } = useQuery(
-    ['search', query],
-    async () => {
-      if (query.length < 2) return []
-      
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
-      if (!response.ok) return []
-      
-      const data = await response.json()
-      return data.results || []
-    },
-    {
-      enabled: query.length >= 2,
-      staleTime: 5 * 60 * 1000, // 5 minutes
+  // Search function
+  const performSearch = async (searchQuery: string) => {
+    if (searchQuery.length < 2) {
+      setSearchResults([])
+      return
     }
-  )
+
+    setIsLoading(true)
+    try {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`)
+      if (response.ok) {
+        const data = await response.json()
+        setSearchResults(data.results || [])
+      } else {
+        setSearchResults([])
+      }
+    } catch (error) {
+      console.error('Search error:', error)
+      setSearchResults([])
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Debounced search with longer delay and minimum query length
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (query.length >= 3) { // Increased minimum length
+        performSearch(query)
+      } else if (query.length === 0) {
+        setSearchResults([])
+      }
+    }, 500) // Increased delay to 500ms
+
+    return () => clearTimeout(timeoutId)
+  }, [query])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,7 +78,7 @@ export default function SearchBar() {
   }, [])
 
   useEffect(() => {
-    if (query.length >= 2) {
+    if (query.length >= 3) { // Increased minimum length
       setIsOpen(true)
       setSelectedIndex(-1)
     } else {
@@ -140,7 +163,7 @@ export default function SearchBar() {
           onKeyDown={handleKeyDown}
           onFocus={() => {
             setIsFocused(true)
-            if (query.length >= 2) setIsOpen(true)
+            if (query.length >= 3) setIsOpen(true)
           }}
           onBlur={() => setIsFocused(false)}
           placeholder="Search books, subjects, or ISBN..."
@@ -208,23 +231,16 @@ export default function SearchBar() {
                           {result.title}
                         </div>
                         <div className="text-xs sm:text-sm text-secondary-600 mt-1 truncate">
-                          {result.type === 'product' ? (
-                            <>
-                              {result.grade} • {result.subject}
-                            </>
-                          ) : (
-                            'Class Booklist'
-                          )}
+                          {result.author} • {result.grade} • {result.subject}
                         </div>
+                        {result.price && (
+                          <div className="text-xs sm:text-sm text-primary-600 font-medium mt-1">
+                            ₦{result.price.toLocaleString()}
+                          </div>
+                        )}
                       </div>
-                      <div className={`
-                        text-xs font-medium px-2 py-1 rounded-full transition-all duration-200 flex-shrink-0 ml-2
-                        ${result.type === 'product' 
-                          ? 'bg-blue-100 text-blue-700 group-hover:bg-blue-200' 
-                          : 'bg-green-100 text-green-700 group-hover:bg-green-200'
-                        }
-                      `}>
-                        {result.type}
+                      <div className="text-xs font-medium px-2 py-1 rounded-full transition-all duration-200 flex-shrink-0 ml-2 bg-blue-100 text-blue-700 group-hover:bg-blue-200">
+                        Product
                       </div>
                     </div>
                   </button>
@@ -243,7 +259,7 @@ export default function SearchBar() {
                   </button>
                 </div>
               </div>
-            ) : query.length >= 2 ? (
+            ) : query.length >= 3 ? (
               <div className="p-4 sm:p-6 text-center">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
                   <MagnifyingGlassIcon className="h-5 w-5 sm:h-6 sm:w-6 text-secondary-400" />

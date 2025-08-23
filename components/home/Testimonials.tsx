@@ -8,7 +8,7 @@ const testimonials = [
     id: 1,
     name: 'Mrs. Sarah Johnson',
     role: 'Parent of Primary 3 Student',
-    content: "Faith Life Bookshop has made getting my daughter's school books so much easier. The complete booklist feature saved me hours of searching, and the school pickup option is incredibly convenient.",
+          content: "Faith Life Bookshop has made getting my daughter's school books so much easier. The wide selection and school pickup option is incredibly convenient.",
     rating: 5,
     avatar: '/images/testimonials/parent-1.jpg'
   },
@@ -65,7 +65,7 @@ export default function Testimonials() {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="container mx-auto px-2 sm:px-4 lg:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-secondary-900 mb-4">What Our Community Says</h2>
           <p className="text-secondary-600 max-w-2xl mx-auto">
@@ -73,36 +73,36 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mb-12">
           {/* School Endorsement - distinguished card */}
-          <div className="bg-success-50 rounded-2xl p-8 shadow-lg border-2 border-success-200 relative">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-success-100 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+          <div className="bg-success-50 rounded-2xl p-6 lg:p-8 shadow-lg border-2 border-success-200 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 lg:w-32 lg:h-32 bg-success-100 rounded-full -translate-y-12 lg:-translate-y-16 translate-x-12 lg:translate-x-16 opacity-50"></div>
             <div className="relative z-10">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full bg-success-600 text-white flex items-center justify-center font-bold mr-4">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-success-600 text-white flex items-center justify-center font-bold mr-3 lg:mr-4 text-sm lg:text-base">
                   FL
                 </div>
-                <div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-success-100 text-success-800 text-xs font-semibold border border-success-300 mb-1">
+                <div className="min-w-0 flex-1">
+                  <div className="inline-flex items-center px-2 py-1 rounded-full bg-success-100 text-success-800 text-xs font-semibold border border-success-300 mb-1">
                     {schoolEndorsement.title}
                   </div>
-                  <h3 className="font-semibold text-secondary-900">{schoolEndorsement.name}</h3>
+                  <h3 className="font-semibold text-secondary-900 text-sm lg:text-base">{schoolEndorsement.name}</h3>
                 </div>
               </div>
               
-              <blockquote className="text-secondary-800 text-lg leading-relaxed mb-4 italic break-words">
+              <blockquote className="text-secondary-800 text-base lg:text-lg leading-relaxed mb-4 italic break-words">
                 "{schoolEndorsement.content}"
               </blockquote>
               
               <div className="pt-4 border-t border-success-200">
-                <p className="font-medium text-secondary-900">{schoolEndorsement.author}</p>
-                <p className="text-sm text-secondary-600">{schoolEndorsement.position}</p>
+                <p className="font-medium text-secondary-900 text-sm lg:text-base">{schoolEndorsement.author}</p>
+                <p className="text-xs lg:text-sm text-secondary-600">{schoolEndorsement.position}</p>
               </div>
             </div>
           </div>
 
           {/* Customer Testimonials */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-secondary-200">
+          <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg border border-secondary-200">
             <div className="relative">
               <div className="overflow-hidden rounded-xl">
                 <div 
@@ -112,15 +112,15 @@ export default function Testimonials() {
                   {testimonials.map((testimonial) => (
                     <div key={testimonial.id} className="w-full flex-shrink-0 p-2">
                       <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-4 text-white font-semibold shadow-lg">
+                        <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mr-3 lg:mr-4 text-white font-semibold shadow-lg text-sm lg:text-base">
                           {testimonial.name
                             .split(' ')
                             .map((n) => n[0])
                             .join('')}
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-secondary-900">{testimonial.name}</h4>
-                          <p className="text-sm text-secondary-600">{testimonial.role}</p>
+                        <div className="min-w-0 flex-1">
+                          <h4 className="font-semibold text-secondary-900 text-sm lg:text-base">{testimonial.name}</h4>
+                          <p className="text-xs lg:text-sm text-secondary-600">{testimonial.role}</p>
                         </div>
                       </div>
                       
@@ -128,12 +128,12 @@ export default function Testimonials() {
                         {[...Array(5)].map((_, i) => (
                           <StarIcon
                             key={i}
-                            className={`h-4 w-4 ${i < testimonial.rating ? 'text-yellow-400' : 'text-secondary-300'}`}
+                            className={`h-3 w-3 lg:h-4 lg:w-4 ${i < testimonial.rating ? 'text-yellow-400' : 'text-secondary-300'}`}
                           />
                         ))}
                       </div>
                       
-                      <blockquote className="text-secondary-700 text-lg leading-relaxed italic break-words">
+                      <blockquote className="text-secondary-700 text-base lg:text-lg leading-relaxed italic break-words">
                         "{testimonial.content}"
                       </blockquote>
                     </div>
@@ -162,22 +162,22 @@ export default function Testimonials() {
 
         {/* Trust Indicators */}
         <div className="text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8">
             <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">5000+</div>
-              <div className="text-sm text-secondary-600">Happy Parents</div>
+              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-2">5000+</div>
+              <div className="text-xs lg:text-sm text-secondary-600">Happy Parents</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">98%</div>
-              <div className="text-sm text-secondary-600">Satisfaction Rate</div>
+              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-2">98%</div>
+              <div className="text-xs lg:text-sm text-secondary-600">Satisfaction Rate</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">24hr</div>
-              <div className="text-sm text-secondary-600">Order Processing</div>
+              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-2">24hr</div>
+              <div className="text-xs lg:text-sm text-secondary-600">Order Processing</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">100%</div>
-              <div className="text-sm text-secondary-600">Quality Guaranteed</div>
+              <div className="text-2xl lg:text-3xl font-bold text-primary-600 mb-2">100%</div>
+              <div className="text-xs lg:text-sm text-secondary-600">Quality Guaranteed</div>
             </div>
           </div>
         </div>
