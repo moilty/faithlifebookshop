@@ -191,7 +191,7 @@ export default function Footer() {
       <a
         href="https://wa.me/2348130621314"
         className="fixed bottom-6 right-6 bg-success-500 text-white p-4 rounded-full shadow-lg hover:bg-success-600 transition-colors z-50"
-        aria-label="Chat on WhatsApp"
+        aria-label="Chat us on WhatsApp"
         target="_blank"
         rel="noopener noreferrer"
       >
